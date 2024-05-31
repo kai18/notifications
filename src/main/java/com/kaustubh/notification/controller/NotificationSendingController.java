@@ -2,6 +2,7 @@ package com.kaustubh.notification.controller;
 
 import com.kaustubh.notification.service.NotificationSendingService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +17,7 @@ public class NotificationSendingController {
     }
 
     @PostMapping("send")
-    public ResponseEntity<Boolean> sendNotification(long id) {
+    public ResponseEntity<Boolean> sendNotification(@PathVariable("id") Long id) {
         boolean status = this.notificationSendingService.send(id);
         return ResponseEntity.ok().body(status);
     }
